@@ -1,0 +1,264 @@
+/* Created by Tivotal */
+
+/* Google Fonts(Poppins) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #4070f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.btn {
+  position: relative;
+  display: block;
+  width: 130px;
+  height: 40px;
+  cursor: pointer;
+  text-align: left;
+  padding: 0 0 0 20px;
+  background: none;
+  outline: none;
+  border: none;
+  perspective: 100px;
+  scale: 3;
+}
+
+.btn::before {
+  z-index: 2;
+  display: block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 5px;
+  left: 0;
+  top: 0;
+  transition: 0.5s ease;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4070f4;
+  transition: 0.2s ease;
+}
+
+.btn:active:before {
+  transform: scale(0.96);
+}
+
+svg {
+  display: block;
+  position: absolute;
+}
+
+.door-frame {
+  width: 32px;
+  z-index: 3;
+  right: 12px;
+  bottom: 4px;
+  fill: gray;
+}
+
+.door-frame .flash {
+  opacity: 0;
+}
+
+.btn {
+  --door-transform: rotateY(20deg);
+  --door-duration: 0.2s;
+  --door-delay: 0;
+}
+
+.door {
+  width: 32px;
+  z-index: 5;
+  right: 12px;
+  bottom: 4px;
+  transform-style: preserve-3d;
+  transform: var(--door-transform);
+  transform-origin: 100% 50%;
+  transition: var(--door-duration) ease var(--door-delay);
+  fill: gray;
+}
+
+.door path {
+  fill: #000;
+  stroke: #000;
+  stroke-width: 4;
+}
+
+.btn {
+  --person-transform: none;
+  --person-duration: 0.1s;
+
+  --body-duration: 0.1s;
+}
+
+.person {
+  fill: #000;
+  z-index: 4;
+  width: 30px;
+  right: 25px;
+  bottom: 7px;
+  transform: var(--person-transform);
+  transition: var(--person-duration) cubic-bezier(0.2, 0.1, 0.8, 0.9);
+}
+
+.arm1,
+.arm2,
+.leg1,
+.leg2 {
+  transition: var(--body-duration) ease-in-out;
+}
+
+.btn {
+  --arm1-transform: none;
+  --arm2-transform: none;
+  --leg1-transform: none;
+  --leg2-transform: none;
+}
+
+.arm1 {
+  transform: var(--arm1-transform);
+  transform-origin: 52% 45%;
+}
+
+.arm2 {
+  transform: var(--arm2-transform);
+  transform-origin: 47% 43%;
+}
+
+.leg1 {
+  transform: var(--leg1-transform);
+  transform-origin: 47% 64.5%;
+}
+
+.leg2 {
+  transform: var(--leg2-transform);
+  transform-origin: 43% 63%;
+}
+
+.btn:hover .btn-text {
+  opacity: 0.8;
+}
+
+.btn:hover {
+  --door-transform: rotateY(28deg);
+
+  --person-transform: translateX(2px);
+
+  --arm1-transform: rotate(-5deg);
+  --arm2-transform: rotate(5deg);
+  --leg1-transform: rotate(-10deg);
+  --leg2-transform: rotate(20deg);
+}
+
+.btn.clicked {
+  --door-transform: rotateY(45deg);
+
+  --person-transform: translateX(21px);
+  --person-duration: 0.3s;
+
+  --body-duration: 0.3s;
+
+  --arm1-transform: translateX(-4px) translateY(-2px) rotate(120deg);
+  --arm2-transform: translateX(4px) rotate(-110deg);
+  --leg1-transform: translateX(-3px) rotate(80deg);
+  --leg2-transform: translateX(4px) rotate(-60deg);
+}
+
+.btn.anim1 {
+  --door-transform: none;
+  --door-duration: 0.1s;
+  --door-delay: 0.25s;
+
+  --person-duration: 0.4s;
+
+  --arm1-transform: rotate(60deg);
+  --arm2-transform: rotate(-45deg);
+  --leg1-transform: rotate(-5deg);
+  --leg2-transform: rotate(10deg);
+}
+
+.btn.anim2 {
+  animation: shake 0.2s linear;
+
+  --person-duration: 1.6s;
+
+  --body-duration: 0.4s;
+
+  --arm1-transform: rotate(-60deg);
+  --arm2-transform: rotate(30deg);
+  --leg1-transform: rotate(-30deg);
+  --leg2-transform: rotate(20deg);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+.btn.anim2 .flash {
+  animation: flash 0.3s linear;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.btn.anim2 .person {
+  animation: spin 1.2s infinite linear;
+  bottom: -1080px;
+  right: 1px;
+  transition: transform var(--person-duration) linear,
+    bottom var(--person-duration) cubic-bezier(0.7, 0.1, 1, 1) 0.1s,
+    opacity calc(var(--person-duration) * 0.25) linear
+      calc(var(--person-duration) * 0.75);
+  z-index: 1;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg) scale(1.3);
+  }
+  to {
+    transform: rotate(359deg) scale(1.3);
+  }
+}
+
+.btn.logged-out .door,
+.btn.logged-out .door-frame {
+  --door-duration: 0.1s;
+  --door-delay: 0s;
+  transform: translateX(10px) scale(0);
+}
+
+.btn.logged-out .btn-text {
+  font-size: 16px;
+  color: red;
+}
