@@ -92,7 +92,8 @@ svg {
   transform-style: preserve-3d;
   transform: var(--door-transform);
   transform-origin: 100% 50%;
-  transition: var(--door-duration) ease var(--door-delay);
+  transition: var(--door-duration) ease 
+              var(--door-delay);
   fill: gray;
 }
 
@@ -116,7 +117,8 @@ svg {
   right: 25px;
   bottom: 7px;
   transform: var(--person-transform);
-  transition: var(--person-duration) cubic-bezier(0.2, 0.1, 0.8, 0.9);
+  transition: var(--person-duration) 
+              cubic-bezier(0.2, 0.1, 0.8, 0.9);
 }
 
 .arm1,
@@ -176,10 +178,15 @@ svg {
 
   --body-duration: 0.3s;
 
-  --arm1-transform: translateX(-4px) translateY(-2px) rotate(120deg);
-  --arm2-transform: translateX(4px) rotate(-110deg);
-  --leg1-transform: translateX(-3px) rotate(80deg);
-  --leg2-transform: translateX(4px) rotate(-60deg);
+  --arm1-transform: translateX(-4px) 
+                    translateY(-2px) 
+                    rotate(120deg);
+  --arm2-transform: translateX(4px) 
+                    rotate(-110deg);
+  --leg1-transform: translateX(-3px) 
+                    rotate(80deg);
+  --leg2-transform: translateX(4px) 
+                    rotate(-60deg);
 }
 
 .btn.anim1 {
@@ -236,9 +243,11 @@ svg {
   bottom: -1080px;
   right: 1px;
   transition: transform var(--person-duration) linear,
-    bottom var(--person-duration) cubic-bezier(0.7, 0.1, 1, 1) 0.1s,
-    opacity calc(var(--person-duration) * 0.25) linear
-      calc(var(--person-duration) * 0.75);
+              bottom var(--person-duration) 
+              cubic-bezier(0.7, 0.1, 1, 1) 0.1s,
+              opacity calc(var(--person-duration) * 0.25) 
+              linear
+              calc(var(--person-duration) * 0.75);
   z-index: 1;
 }
 
