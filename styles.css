@@ -244,10 +244,7 @@ svg {
   right: 1px;
   transition: transform var(--person-duration) linear,
               bottom var(--person-duration) 
-              cubic-bezier(0.7, 0.1, 1, 1) 0.1s,
-              opacity calc(var(--person-duration) * 0.25) 
-              linear
-              calc(var(--person-duration) * 0.75);
+              cubic-bezier(0.7, 0.1, 1, 1) 0.1s;
   z-index: 1;
 }
 
