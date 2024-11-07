@@ -24,6 +24,7 @@ body {
   display: block;
   width: 130px;
   height: 40px;
+  scale: 3;
   cursor: pointer;
   text-align: left;
   padding: 0 0 0 20px;
@@ -31,7 +32,6 @@ body {
   outline: none;
   border: none;
   perspective: 100px;
-  scale: 3;
 }
 
 .btn::before {
